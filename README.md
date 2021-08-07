@@ -12,7 +12,7 @@ This will be an online store that will describe the unique capabilities of this 
 - Allow users to select style and color of fry pan they wish to purchase
 - Allow the user to add and remove items from a shopping cart that will update as you click on the buttons
 - Allow users to use Stripe to pay for their items
-- Send the users an automated email that thier order was received and is being processed
+- Send the users an automated email that thier order was received and is being processed (bonus if time)
 
 ## Data Model
 
@@ -53,7 +53,7 @@ This will be an online store that will describe the unique capabilities of this 
 
 #### Week 3
 - Learn and implement Stripe's Payment service
-- Learn and implement automated email responses
+- Learn and implement automated email responses (bonus if time)
 
 #### Week 4
 - Fix bugs
