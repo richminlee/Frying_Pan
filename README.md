@@ -31,7 +31,6 @@ This will be an online store that will describe the unique capabilities of this 
 
 #### Pan Ordered
 - Pan Size
-- Pan Color
 - Quantity
 
 ## Schedule
