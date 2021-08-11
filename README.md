@@ -30,10 +30,9 @@ This will be an online store that will describe the unique capabilities of this 
 - Pan Ordered (one to many)
 
 #### Pan Ordered
-- Pan Style
+- Pan Size
 - Pan Color
 - Quantity
-
 
 ## Schedule
 #### Week 1
