@@ -19,8 +19,9 @@ This will be an online store that will describe the unique capabilities of this 
 #### User
 - First Name
 - Last Name
-- Email
+- Email (Username)
 - Phone Number
+- Password
 
 #### Order
 - User (one to many)
