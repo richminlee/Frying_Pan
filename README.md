@@ -43,9 +43,8 @@ This will be an online store that will describe the unique capabilities of this 
   - Create PanOrder Table
 - Create Login and Registration Page
 - Create Homepage
-- Create Pan 1 detail page
-- Create Pan 2 detail page
-- Create Pan 3 detail page
+- Create Pan detail page
+
 
 #### Week 2
 - Work on a functional shopping cart (Find a JavaScript Framework)
