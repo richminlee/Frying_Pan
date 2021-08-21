@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <main>
+    <div class="container">
+        <div class="table-responsive text-nowrap">
+            <h2 class="text-center mt-2">Order Summary</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Item Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for order_item in order.items.all %}
+                {% if order_item.quantity %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ order_item.items.title }}</td>
+                    {% if order_item.items.discount_price %}
+                        <td>${{ order_item.items.discount_price }}</td>
+                    {% else %}
+                        <td>${{ order_item.items.price }}</td>
+                    {% endif %}
+                    <td>
+                        {% if order_item.quantity > 1 %}
+                        <a href="{% url 'frypan:remove_single_from_cart' order_item.items.id %}"><i class="fas fa-minus mr-2"></i></a>
+                        {% else %}
+                        <a href="{% url 'frypan:remove_from_cart' order_item.items.id %}"><i class="fas fa-minus mr-2"></i></a>
+                        {% endif %}
+                        {{ order_item.quantity }}
+                        <a href="{% url 'frypan:add_to_cart' order_item.items.id %}"><i class="fas fa-plus ml-2"></i></a>
+                    </td>
+                    {% if order_item.items.discount_price %}
+                        <td>${{ order_item.get_total_discount_price }} <span class="badge badge-success">Saving ${{ order_item.get_amount_saved }}</span></td>
+                    {% else %}
+                        <td>${{ order_item.get_total_item_price }}</td>
+                    {% endif %}
+                    <td><a href="{% url 'frypan:remove_from_cart' order_item.items.id %}"><i class="fas fa-trash-alt text-danger"></i></a></td>
+                </tr>
+                {% endif %}
+                {% empty %}
+                <tr>
+                    <td colspan="5">Your cart is empty.</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <a class="btn btn-warning float-right m-1" href="{% url 'frypan:home' %}">continue shopping</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if order.get_total %}
+                <tr>
+                    <th colspan="4">Order Total</th>
+                    <th>${{ order.get_total }}</th>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <a class="btn btn-primary float-right m-1" href="{% url 'frypan:checkout' %}">Proceed to Checkout</a>
+                        <a class="btn btn-warning float-right m-1" href="{% url 'frypan:home' %}">continue shopping</a>
+                    </td>
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+            </div>
+    </div>
+    </main>
+{% endblock content %}

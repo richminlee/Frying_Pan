@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+  <!--Carousel Wrapper-->
+  <div class="row mt-5">
+    <div class="col"></div>
+    <div class="col">
+      <iframe width="640" height="360" src="https://www.youtube.com/embed/7X8II6J-6mU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="col"></div>
+  </div>
+  <!--/.Carousel Wrapper-->
+  <!--Main layout-->
+  <main>
+    <div class="container">
+      <div class="mt-3 mb-5"></div>
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <div class="row wow fadeIn">
+
+          {% for item in items %}
+          <div class="col-lg-4 col-md-12 mb-4">
+
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{ item.img }}" class="card-img-top"
+                  alt="">
+                <a href="{% url 'frypan:product' item.id %}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <h5>
+                  <strong>
+                    <a href="{% url 'frypan:product' item.id %}" class="dark-grey-text">{{ item.title }}
+                      <span class="badge badge-pill {{ item.label_color }}-color">{{ item.label }}</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  {% if item.discount_price %}
+                  <strong>${{ item.discount_price }}</strong>
+                  {% else %}
+                  <strong>${{ item.price }}</strong>
+                  {% endif %}
+                </h4>
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+          {% endfor %}
+          
+        </div>
+
+      </section>
+      <!--Section: Products v.3-->
+    </div>
+  </main>
+  <!--Main layout-->
+{% endblock content %}
