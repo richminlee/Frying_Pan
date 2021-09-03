@@ -4,10 +4,10 @@ from django.db.models.deletion import CASCADE
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
-    price = models.FloatField()
-    discount_price = models.FloatField(blank=True, null=True)
-    label_color = models.CharField(max_length=25)
-    label = models.CharField(max_length=25)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    discount_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    label_color = models.CharField(max_length=25, blank=True, null=True)
+    label = models.CharField(max_length=25, blank=True, null=True)
     description = models.TextField()
     img = models.CharField(max_length=500)
     

@@ -1,50 +1,99 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-  <!--Carousel Wrapper-->
-  <div class="row mt-5">
-    <div class="col"></div>
-    <div class="col">
-      <iframe width="640" height="360" src="https://www.youtube.com/embed/7X8II6J-6mU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url(static/img/DSC00824.jpg); background-repeat: no-repeat; background-size: cover;">
+          <div class="mask d-flex rgba-black-light justify-content-center align-items-center">
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>The new standard in cookware!</strong>
+              </h1>
+              <p>
+                <strong>Our unique design is not just made for looks!</strong>
+              </p>
+              <p class="mb-4 d-none d-md-block">
+                <strong> Our patented design allows for easy flips and tosses!</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="view" style="background-image: url(static/img/DSC009292.jpg); background-repeat: no-repeat; background-size: cover;">
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Cook an array of versatile foods!</strong>
+              </h1>
+              <p>
+                <strong>The pan stands out against the rest!</strong>
+              </p>
+              <p class="mb-4 d-none d-md-block">
+                <strong>Even more details about the Medium pan! Even more details about the medium pan! Even more details about the medium pan!</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="view" style="background-image: url(static/img/PanHandles.png); background-repeat: no-repeat; background-size: cover;">
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>The WOK for that perfect stir fry or throwing a party!</strong>
+              </h1>
+              <p>
+                <strong>Why this pan stands out against the rest!</strong>
+              </p>
+              <p class="mb-4 d-none d-md-block">
+                <strong>Even more details about the WOK! Even more details about the WOK! Even more details about the WOK!</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col"></div>
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <!--/.Carousel Wrapper-->
-  <!--Main layout-->
   <main>
     <div class="container">
       <div class="mt-3 mb-5"></div>
-      <!--Section: Products v.3-->
       <section class="text-center mb-4">
-
         <div class="row wow fadeIn">
-
           {% for item in items %}
           <div class="col-lg-4 col-md-12 mb-4">
-
-            <!--Card-->
             <div class="card">
-
-              <!--Card image-->
-              <div class="view overlay">
+              <div class="view overlay pt-2">
                 <img src="{{ item.img }}" class="card-img-top"
                   alt="">
                 <a href="{% url 'frypan:product' item.id %}">
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
-              <!--Card image-->
-
-              <!--Card content-->
               <div class="card-body text-center">
-                <!--Category & Title-->
                 <h5>
                   <strong>
                     <a href="{% url 'frypan:product' item.id %}" class="dark-grey-text">{{ item.title }}
+                      {% if item.label_color %}
                       <span class="badge badge-pill {{ item.label_color }}-color">{{ item.label }}</span>
+                      {% endif %}
                     </a>
                   </strong>
                 </h5>
-
                 <h4 class="font-weight-bold blue-text">
                   {% if item.discount_price %}
                   <strong>${{ item.discount_price }}</strong>
@@ -52,21 +101,20 @@
                   <strong>${{ item.price }}</strong>
                   {% endif %}
                 </h4>
-
               </div>
-              <!--Card content-->
-
             </div>
-            <!--Card-->
-
           </div>
           {% endfor %}
-          
         </div>
-
       </section>
-      <!--Section: Products v.3-->
+      
     </div>
   </main>
-  <!--Main layout-->
+<div class="row mt-5">
+  <div class="col-4"></div>
+  <div class="col">
+    <iframe src="https://cdn.shopify.com/s/files/1/1619/3947/t/19/assets/PrepdSkilletWebsite_TheUltimatePan.gif?v=8735820448133034040" style="width: 100vw; height:100vh;" frameBorder="0" class="giphy-embed"></iframe>
+  </div>
+  <div class="col"></div>
+</div>
 {% endblock content %}

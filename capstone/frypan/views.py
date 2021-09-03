@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from  .models import Item, OrderItem, Order
+from .forms import CheckoutForm
 
 def home(request):
     context = {
@@ -18,7 +19,18 @@ def contact_us(request):
     return render(request, 'contactUs.html')
 
 def checkout(request):
-    return render(request, 'checkout.html')
+    form = CheckoutForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'checkout.html', context)
+
+def checkout_submit(request):
+    form = CheckoutForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        print("form is valid")
+        return redirect('frypan:checkout')
 
 @login_required
 def order_summary(request):
@@ -113,6 +125,8 @@ def remove_from_cart(request, product_id):
                 user = request.user,
                 ordered = False
                 )[0]
+            order_item.quantity = 0
+            order_item.save()   
             order.items.remove(order_item)
             messages.info(request, "This item was removed from your cart.")
             return redirect("frypan:order_summary")

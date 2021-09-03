@@ -6,6 +6,7 @@ app_name = 'frypan'
 urlpatterns = [
     path('', views.home, name='home'),
     path('checkout/', views.checkout, name='checkout'),
+    path('checkout_submit/', views.checkout_submit, name='checkout_submit'),
     path('about_us/', views.about_us, name='about_us'),
     path('contact_us/', views.contact_us, name='contact_us'),
     path('order_summary/', views.order_summary, name='order_summary'),
