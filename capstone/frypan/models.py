@@ -5,6 +5,7 @@ from django.db.models.deletion import CASCADE
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=6, decimal_places=2)
+    stripe_price = models.CharField(max_length=120, blank=True, null=True)
     discount_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     label_color = models.CharField(max_length=25, blank=True, null=True)
     label = models.CharField(max_length=25, blank=True, null=True)
